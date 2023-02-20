@@ -1,12 +1,12 @@
-public class SingleLinkedList<T> implements IList{
+public class SingleLinkedList<T> implements IList<T> {
     private int count;
     private Node<T> start;
     private Node<T> end;
 
 
     @Override
-    public void InsertAtStart(Object value) {
-        Node<T> newNode = new Node<T>((T) value);
+    public void InsertAtStart(T value) {
+        Node<T> newNode = new Node<T>(value);
 
         if (IsEmpty())
         {
@@ -22,8 +22,8 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public void InsertAtEnd(Object value) {
-        Node<T> newNode = new Node<T>((T) value);
+    public void InsertAtEnd(T value) {
+        Node<T> newNode = new Node<T>(value);
 
         if (IsEmpty())
         {
@@ -39,7 +39,7 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public void Insert(Object value, int index) {
+    public void Insert(T value, int index) {
         if (IsEmpty()) //Si la lista esta vacia, entonces se inserta al inicio
         {
             InsertAtStart(value);
@@ -56,7 +56,7 @@ public class SingleLinkedList<T> implements IList{
             }
             else if ((index > 0) && (index < Count())) //Un indice entre 1 (el segundo elemento) y Count() -1 el anterior
             {
-                Node<T> newNode = new Node<T>((T) value);
+                Node<T> newNode = new Node<T>(value);
                 Node<T> pretemp = start;
                 Node<T> temp = start.getNext();
                 int i = 1;
@@ -77,7 +77,7 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object Delete(int index) {
+    public T Delete(int index) {
         if (index == 0)
         {
             return DeleteAtStart();
@@ -112,7 +112,7 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object DeleteAtStart() {
+    public T DeleteAtStart() {
         if (!IsEmpty())
         {
             Node<T> temp = start;
@@ -125,7 +125,7 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object DeleteAtEnd() {
+    public T DeleteAtEnd() {
         if (!IsEmpty())
         {
 
@@ -162,7 +162,7 @@ public class SingleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object Get(int index) {
+    public T Get(int index) {
         if (!IsEmpty())
         {
             if (index == 0)

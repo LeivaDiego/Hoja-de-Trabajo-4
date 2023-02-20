@@ -1,8 +1,16 @@
-public class DoubleLinkedList<T> implements IList{
-    private DoubleNode<T> start;
-    private DoubleNode<T> end;
-    private int count;
+/**
+ * @author diego leiva
+ * Clase con los metodos para una lista doblemente encadenada
+ * @param <T> dato generico
+ */
+public class DoubleLinkedList<T> implements IList<T>{
+    private DoubleNode<T> start;    //valor del nodo del inicio
+    private DoubleNode<T> end;      //valor del nodo del final
+    private int count;              //contador
 
+    /**
+     * Constructor de la lista doblemente encadenada
+     */
     public DoubleLinkedList() {
         start = null;
         end = null;
@@ -11,8 +19,8 @@ public class DoubleLinkedList<T> implements IList{
 
 
     @Override
-    public void InsertAtStart(Object value) {
-        DoubleNode<T> newNode = new DoubleNode<T>((T) value);
+    public void InsertAtStart(T value) {
+        DoubleNode<T> newNode = new DoubleNode<T>(value);
 
         if (IsEmpty()) {
 
@@ -33,8 +41,8 @@ public class DoubleLinkedList<T> implements IList{
     }
 
     @Override
-    public void InsertAtEnd(Object value) {
-        DoubleNode<T> newNode = new DoubleNode<T>((T) value);
+    public void InsertAtEnd(T value) {
+        DoubleNode<T> newNode = new DoubleNode<T>(value);
 
         if (IsEmpty()) {
 
@@ -55,7 +63,7 @@ public class DoubleLinkedList<T> implements IList{
     }
 
     @Override
-    public void Insert(Object value, int index) {
+    public void Insert(T value, int index) {
         if (IsEmpty()) //if the list is empty then insert at start
         {
             InsertAtStart(value);
@@ -68,11 +76,11 @@ public class DoubleLinkedList<T> implements IList{
             }
             else if (index == 0) //If the index to insert is 0 and the list is not empty
             {
-                InsertAtStart(value);
+                InsertAtStart((T) value);
             }
             else if ((index > 0) && (index < Count())) //Index between 1 (second element) and Count() - 1 previous the last one
             {
-                DoubleNode<T> newNode = new DoubleNode<T>((T) value);
+                DoubleNode<T> newNode = new DoubleNode<T>(value);
                 DoubleNode<T> temp = start;
                 int i = 0;
 
@@ -84,6 +92,7 @@ public class DoubleLinkedList<T> implements IList{
 
                 //doing the insertion
                 newNode.setNext(temp);
+                assert temp != null;
                 newNode.setPrevious(temp.getPrevious());
                 temp.setPrevious(newNode);
                 newNode.getPrevious().setNext(newNode);
@@ -93,12 +102,12 @@ public class DoubleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object Delete(int index) {
+    public T Delete(int index) {
         return null;
     }
 
     @Override
-    public Object DeleteAtStart() {
+    public T DeleteAtStart() {
         if (!IsEmpty()) {
 
             if (Count() == 1) {
@@ -122,12 +131,12 @@ public class DoubleLinkedList<T> implements IList{
     }
 
     @Override
-    public Object DeleteAtEnd() {
+    public T DeleteAtEnd() {
         return null;
     }
 
     @Override
-    public Object Get(int index) {
+    public T Get(int index) {
         if (!IsEmpty())
         {
             if (index == 0)

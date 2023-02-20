@@ -1,2 +1,2 @@
-public class StackUsingArrayList {
+public class StackUsingArrayList{
 }
