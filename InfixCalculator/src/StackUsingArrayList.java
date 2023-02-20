@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Clase con la implementacion de una pila a partir del uso de un
+ * arrayList
+ * @author diego leiva
+ * @param <T> dato generico
+ */
 public class StackUsingArrayList<T> extends Stack<T>{
 
     private ArrayList<T> arrayList;
