@@ -1,3 +1,8 @@
+/**
+ * Clase abstacta para la implementacion de listas
+ * @author diego leiva
+ * @param <T> dato generico
+ */
 public abstract class List<T> implements IList<T> {
     private int count;          //contador
     private Node<T> start;      //nodo de inicio

@@ -1,4 +1,4 @@
-public class SingleLinkedList<T> implements IList<T> {
+public class SingleLinkedList<T> extends List<T> {
     private int count;
     private Node<T> start;
     private Node<T> end;

@@ -3,7 +3,7 @@
  * Clase con los metodos para una lista doblemente encadenada
  * @param <T> dato generico
  */
-public class DoubleLinkedList<T> implements IList<T>{
+public class DoubleLinkedList<T> extends List<T>{
     private DoubleNode<T> start;    //valor del nodo del inicio
     private DoubleNode<T> end;      //valor del nodo del final
     private int count;              //contador
