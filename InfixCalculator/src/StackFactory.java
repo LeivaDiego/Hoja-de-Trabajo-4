@@ -9,8 +9,7 @@ public class StackFactory<T> {
                 stack = new StackUsingVector<>();
             case 3:
                 stack = new StackUsingList<T>(listType);
-            default:
-                throw new IllegalArgumentException("La implementacion no es valida");
         }
+        return stack;
     }
 }

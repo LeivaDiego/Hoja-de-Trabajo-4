@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Deque;
  */
 public class InfixPostfixConverter {
     FileManager fileManager = new FileManager();
+    String postfixExpression;
 
     /**
      * Metodo encargado de evaluar la precedencia de los operadores
@@ -87,8 +89,6 @@ public class InfixPostfixConverter {
             result += stack.peek();
             stack.pop();
         }
-
         return result;
     }
-
 }
