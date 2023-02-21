@@ -10,11 +10,25 @@ public class PostfixCalculator<T> implements IPostfixCalculator<T>{
     private int stackType;
     private StackFactory<Integer> stackFactory;
 
+    /**
+     * Constructor de la calculadora postfix
+     * @param s, el tipo de pila a implementar
+     * @param l, el tipo de lista a implementar
+     */
     public PostfixCalculator(int s, int l){
         this.stackFactory = new StackFactory<Integer>();
         this.listType = l;
         this.stackType = s;
     }
+
+    /**
+     * Metodo encargado de realizar la expresion postfix
+     * empleando el patron de diseño factory para seleccionar
+     * la implementacion de la pila
+     * @param postfix_expression un arraylist generico
+     * @return  El valor final de la operacion
+     * @throws SinglentonException
+     */
     @Override
     public int Calculate(ArrayList<T> postfix_expression) throws SinglentonException {
         Stack<Integer> stack = stackFactory.CreateStack(stackType,listType);
@@ -22,8 +36,8 @@ public class PostfixCalculator<T> implements IPostfixCalculator<T>{
             if (isNumber((String) s)) {
                 stack.push(Integer.parseInt((String) s));
             } else {
-                int num2 = stack.pull();
                 int num1 = stack.pull();
+                int num2 = stack.pull();
                 int result = 0;
                 switch ((String)s) {
                     case "+":
@@ -44,10 +58,15 @@ public class PostfixCalculator<T> implements IPostfixCalculator<T>{
                 stack.push(result);
             }
         }
-
         return stack.pull();
     }
 
+    /**
+     * Metodo que revisa si el caracter del stack
+     * es un numer
+     * @param s el string a evaluar
+     * @return  verdadero o falso si es o no numero
+     */
     private boolean isNumber(String s) {
         try {
             Integer.parseInt(s);

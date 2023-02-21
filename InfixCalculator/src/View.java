@@ -1,3 +1,8 @@
+/**
+ * Clase que contiene los metodos para mostrar
+ * los diferentes menus y mensajes en pantalla
+ * @author diego leiva
+ */
 public class View {
 
     public void ImplementationMenu(){
@@ -19,5 +24,11 @@ public class View {
     public void Exit(){
         System.out.println("...");
         System.out.println("Ha salido del Programa");
+    }
+
+    public void Expressions(String infix, String postfix, int res){
+        System.out.println("La expresion INFIX es: "+ infix);
+        System.out.println("La expresion POSTFIX es: "+postfix);
+        System.out.println("El resultado de la operacion es: "+res);
     }
 }

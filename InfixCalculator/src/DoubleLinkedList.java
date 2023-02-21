@@ -18,6 +18,10 @@ public class DoubleLinkedList<T> extends List<T>{
     }
 
 
+    /**
+     * Metodo que inserta el valor al inicio de la lista
+     * @param value el valor a insertar
+     */
     @Override
     public void InsertAtStart(T value) {
         DoubleNode<T> newNode = new DoubleNode<T>(value);
@@ -40,6 +44,10 @@ public class DoubleLinkedList<T> extends List<T>{
         count++;
     }
 
+    /**
+     * Metodo que inserta el valor hasta el final de la lista
+     * @param value, el valor a insertar
+     */
     @Override
     public void InsertAtEnd(T value) {
         DoubleNode<T> newNode = new DoubleNode<T>(value);
@@ -62,35 +70,40 @@ public class DoubleLinkedList<T> extends List<T>{
         count++;
     }
 
+    /**
+     * Metodo que Inserta un valor en el indice indicado
+     * @param value, el valor a insertar
+     * @param index, el indice
+     */
     @Override
     public void Insert(T value, int index) {
-        if (IsEmpty()) //if the list is empty then insert at start
+        if (IsEmpty()) //Si la lista esta vacia, inserta en el inicio
         {
             InsertAtStart(value);
         }
         else
         {
-            if (index >= Count()) //if the index is equal or greater than count then insert at end
+            if (index >= Count()) //Si el indice es mayor o igual que el contador entonces insertar al final
             {
                 InsertAtEnd(value);
             }
-            else if (index == 0) //If the index to insert is 0 and the list is not empty
+            else if (index == 0) //Si el indice a insertar es 0 y la lista no esta vacia
             {
                 InsertAtStart((T) value);
             }
-            else if ((index > 0) && (index < Count())) //Index between 1 (second element) and Count() - 1 previous the last one
+            else if ((index > 0) && (index < Count())) //Indice entre 1 (segundo elemento) y Count() -1 antes que el ultimo
             {
                 DoubleNode<T> newNode = new DoubleNode<T>(value);
                 DoubleNode<T> temp = start;
                 int i = 0;
 
-                //Search the position where the node will be inserted
+                //Busca la posicion de nodo donde sera insertado
                 while ((temp != null) && (i < index)) {
                     temp = temp.getNext();
                     i++;
                 }
 
-                //doing the insertion
+                //Haciendo la incersion
                 newNode.setNext(temp);
                 assert temp != null;
                 newNode.setPrevious(temp.getPrevious());
@@ -101,11 +114,20 @@ public class DoubleLinkedList<T> extends List<T>{
         }
     }
 
+    /**
+     * Metodo que borra el valor
+     * @param index el indice
+     * @return null
+     */
     @Override
     public T Delete(int index) {
         return null;
     }
 
+    /**
+     * Metodo que borra el valor del inicio
+     * @return null
+     */
     @Override
     public T DeleteAtStart() {
         if (!IsEmpty()) {
