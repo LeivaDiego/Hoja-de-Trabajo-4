@@ -10,6 +10,7 @@ public class Main {
         InfixPostfixConverter infixPostfixConverter = new InfixPostfixConverter();
         int option = 0;
         int result = 0;
+        PostfixCalculator calculator;
         String infixExp = fileManager.getInfixExpression("datos.txt");
         String postfixExp = infixPostfixConverter.infixToPostfix(infixExp);
         ArrayList<String> finalExpression = convertStringToList(postfixExp);
@@ -28,14 +29,14 @@ public class Main {
             switch (option){
                 case 1:
                     System.out.println("Selecciono la implementacion con ArrayList");
-                    PostfixCalculator postfixCalculatorArray = new PostfixCalculator<>(1, 1);
-                    result = postfixCalculatorArray.Calculate(finalExpression);
+                    calculator = PostfixCalculator.getInstance(1,1);
+                    result = calculator.Calculate(finalExpression);
                     view.Expressions(infixExp,postfixExp,result);
                     break;
                 case 2:
                     System.out.println("Selecciono la implementacion con Vector");
-                    PostfixCalculator postfixCalculatorVector = new PostfixCalculator<>(2, 1);
-                    result = postfixCalculatorVector.Calculate(finalExpression);
+                    calculator = PostfixCalculator.getInstance(2,1);
+                    result = calculator.Calculate(finalExpression);
                     view.Expressions(infixExp,postfixExp,result);
                     break;
                 case 3:
@@ -55,14 +56,14 @@ public class Main {
                         switch (type){
                             case 1:
                                 System.out.println("Selecciono opcion de lista simplemente encadenada");
-                                PostfixCalculator postfixCalculatorSingle = new PostfixCalculator<>(3, 1);
-                                result = postfixCalculatorSingle.Calculate(finalExpression);
+                                calculator = PostfixCalculator.getInstance(3,1);
+                                result = calculator.Calculate(finalExpression);
                                 view.Expressions(infixExp,postfixExp,result);
                                 break;
                             case 2:
                                 System.out.println("Selecciono opcion de lista doblemente encadenada");
-                                PostfixCalculator postfixCalculatorDouble = new PostfixCalculator<>(3, 2);
-                                result = postfixCalculatorDouble.Calculate(finalExpression);
+                                calculator = PostfixCalculator.getInstance(3,2);
+                                result = calculator.Calculate(finalExpression);
                                 view.Expressions(infixExp,postfixExp,result);
                                 break;
                         }

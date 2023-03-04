@@ -9,16 +9,30 @@ public class PostfixCalculator<T> implements IPostfixCalculator<T>{
     private int listType;
     private int stackType;
     private StackFactory<Integer> stackFactory;
+    private static PostfixCalculator instance;
 
     /**
      * Constructor de la calculadora postfix
      * @param s, el tipo de pila a implementar
      * @param l, el tipo de lista a implementar
      */
-    public PostfixCalculator(int s, int l){
+    private PostfixCalculator(int s, int l){
         this.stackFactory = new StackFactory<Integer>();
         this.listType = l;
         this.stackType = s;
+    }
+
+    /**
+     * Metodo estático para obtener la única instancia de PostfixCalculator
+     * @param s, el tipo de pila a implementar
+     * @param l, el tipo de lista a implementar
+     * @return la instancia de PostfixCalculator
+     */
+    public static synchronized PostfixCalculator getInstance(int s, int l) {
+        if (instance == null) {
+            instance = new PostfixCalculator(s, l);
+        }
+        return instance;
     }
 
     /**
